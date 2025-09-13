@@ -32,14 +32,14 @@ export default function ScrollParallax() {
   const images = [
     {
       src: "https://cdn.pixabay.com/photo/2023/04/10/19/42/sea-7914544_640.jpg",
-      y: lg,
+      y: 0,
       width: '25vw',
       height: '60vh',
       zIndex: 1
     },
     {
       src: "https://cdn.pixabay.com/photo/2018/06/13/18/20/waves-3473335_1280.jpg",
-      y: md,
+      y: lg,
       left: '55vw',
       top: '15vh',
       height: '40vh',
@@ -48,7 +48,7 @@ export default function ScrollParallax() {
     },
     {
       src: "https://cdn.pixabay.com/photo/2019/04/22/04/32/blue-4145659_1280.jpg",
-      y: sm,
+      y: md,
       left: '27.5vw',
       top: '40vh',
       height: '25vh',
@@ -59,6 +59,7 @@ export default function ScrollParallax() {
 
   return (
     <div ref={container} className="container mt-[50vh] min-h-[200vh]">
+    <div className="sticky top-0 overflow-hidden h-[50vh]"></div>
       <div className="body ml-[10vw]">
          <h1 className="m-0 mt-[10px] text-6xl" >Scroll</h1>
       </div>
