@@ -1,7 +1,8 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import Lenis from 'lenis';
+import { useRef, useEffect } from 'react';
 
 const phrases = [
   "It is a long established fact",
@@ -11,6 +12,16 @@ const phrases = [
 ]
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+}, []);
   return (
     <div className="flex flex-col items-center my-[600px] gap-10">
       <MaskText/>
