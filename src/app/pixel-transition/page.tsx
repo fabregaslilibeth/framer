@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import "./style.css";
 
 export default function Home() {
   const [menuIsActive, setMenuIsActive] = useState(false);
@@ -43,12 +44,12 @@ const Header = ({
   setMenuIsActive: (menuIsActive: boolean) => void;
 }) => {
   return (
-    <div className="header">
+    <div className="header fixed flex justify-end w-full p-4 z-10 top-0 p-12">
       <div
         onClick={() => {
           setMenuIsActive(!menuIsActive);
         }}
-        className={`'burger' ${menuIsActive ? "active" : ""}`}
+        className={`burger ${menuIsActive ? "active" : ""}`}
       ></div>
     </div>
   );
@@ -129,7 +130,7 @@ const CenteredPixelTransition = ({
         <motion.div
           key={index}
           className='block'
-          variants={anim}
+          variants={anim2}
           initial="initial"
           animate={menuIsActive ? "open" : "closed"}
           custom={randomIndex}
