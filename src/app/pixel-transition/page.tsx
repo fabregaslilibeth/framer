@@ -1,6 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import CenteredPixelTransition from "../components/CenteredPixelTransition/page";
+import VerticalPixelTransition from "../components/VerticalPixelTransition/page";
+import HorizontalPixelTransition from "../components/HorizontalPixelTransition/page";
 import "./style.css";
 
 export default function Home() {
@@ -27,10 +30,18 @@ export default function Home() {
       <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
       <Menu menuIsActive={menuIsActive} />
       {dimensions.height > 0 && (
-        <CenteredPixelTransition
-          menuIsActive={menuIsActive}
-          dimensions={dimensions}
-        />
+        // <CenteredPixelTransition
+        //   menuIsActive={menuIsActive}
+        //   dimensions={dimensions}
+        // />
+      //   <VerticalPixelTransition
+      //     menuIsActive={menuIsActive}
+      //     dimensions={dimensions}
+      // />
+      <HorizontalPixelTransition
+        menuIsActive={menuIsActive}
+        dimensions={dimensions}
+      />
       )}
     </main>
   );
@@ -79,75 +90,5 @@ const Menu = ({ menuIsActive }: { menuIsActive: boolean }) => {
       <p>About</p>
       <p>Contact</p>
     </motion.div>
-  );
-};
-
-const anim2 = {
-  initial: {
-    opacity: 0,
-  },
-  open: (i) => ({
-    opacity: 1,
-    transition: { duration: 0, delay: 0.03 * i },
-  }),
-  closed: (i) => ({
-    opacity: 0,
-    transition: { duration: 0, delay: 0.03 * i },
-  }),
-};
-
-const CenteredPixelTransition = ({
-  menuIsActive,
-  dimensions,
-}: {
-  menuIsActive: boolean;
-  dimensions: { width: number; height: number };
-}) => {
-  const { width, height } = dimensions;
-
-  /**
-   * Shuffles array in place (Fisher–Yates shuffle).
-   * @param {Array} a items An array containing the items.
-   */
-  const shuffle = (a) => {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = a[i];
-      a[i] = a[j];
-      a[j] = x;
-    }
-    return a;
-  };
-
-  const getBlocks = () => {
-    const { innerWidth, innerHeight } = window;
-    const blockSize = innerWidth * 0.05;
-    const nbOfBlocks = Math.ceil(innerHeight / blockSize);
-    const shuffledIndexes = shuffle([...Array(nbOfBlocks)].map((_, i) => i));
-    return shuffledIndexes.map((randomIndex, index) => {
-      return (
-        <motion.div
-          key={index}
-          className='block'
-          variants={anim2}
-          initial="initial"
-          animate={menuIsActive ? "open" : "closed"}
-          custom={randomIndex}
-        />
-      );
-    });
-  };
-
-  return (
-    <div className='pixelBackground'>
-      {[...Array(20)].map((_, index) => {
-        return (
-          <div key={index} className='column'>
-            {getBlocks()}
-          </div>
-        );
-      })}
-    </div>
   );
 };
