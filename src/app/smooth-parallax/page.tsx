@@ -57,10 +57,10 @@ export default function Home() {
   const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
   return (
-    <main className="main bg-red-500">
+    <main className="main">
       <div className="spacer h-screen"></div>
-      <div ref={gallery} className="gallery h-[175vh] bg-black relative flex gap-[2vw] p-[2vw] overflow-hidden bg-blue-500">
-        <div className="galleryWrapper relative top-[-12vh] h-[200vh] w-full flex gap-[2vw] p-[2vw] bg-green-500">
+      <div ref={gallery} className="gallery h-screen lg:h-[175vh] bg-black relative flex gap-[2vw] p-[2vw] overflow-hidden">
+        <div className="relative top-[-12vh] h-[200vh] w-full flex gap-[2vw] p-[2vw]">
           <Column images={[images[0], images[1], images[2]]} y={y} top={'-30%'} />
           <Column images={[images[3], images[4], images[5]]} y={y2} top={'-70%'} />
           <Column images={[images[6], images[7], images[8]]} y={y3} top={'-30%'} />
@@ -74,12 +74,12 @@ export default function Home() {
 
 const Column = ({ images, y, top }: { images: string[], y: MotionValue<number>, top: string }) => {
   return (
-    <motion.div className="column relative h-full w-1/4 min-w-[250px] flex flex-col gap-[2vw]"
+    <motion.div className="relative h-full w-1/4 min-w-[250px] flex flex-col gap-[2vw]"
     style={{y, top}}
     >
       {images.map((src, i) => {
         return (
-          <div key={i} className="imageContainer h-full w-full relative rounded-[2vw] overflow-hidden">
+          <div key={i} className="h-full w-full relative rounded-[2px] overflow-hidden">
             <Image src={src} alt="image" fill style={{objectFit: 'cover'}} />
           </div>
         );
