@@ -5,14 +5,15 @@ import { useState } from "react";
 import "./style.css";
 
 const anim = {
-  initial: { width: 0 },
+  initial: { width: 0, height: "15vh" },
 
   open: {
-    width: "auto",
+    width: "10vw",
+    height: "15vh",
     transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
   },
 
-  closed: { width: 0 },
+  closed: { width: 0, height: "15vh" },
 };
 
 export default function Home() {
@@ -77,7 +78,7 @@ const Project = ({ project }: { project: any }) => {
         animate={isActive ? "open" : "closed"}
         className="imgContainer"
       >
-        <img src={src}></img>
+        <img src={src} className="w-full h-full object-cover"></img>
       </motion.div>
 
       <p>{title2}</p>
