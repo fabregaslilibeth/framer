@@ -18,29 +18,29 @@ const anim = {
 export default function Home() {
   const projects = [
     {
-      title1: "Jomor",
-      title2: "Design",
-      src: "jomor_design.jpeg",
+      title1: "Puerto",
+      title2: "Princesa",
+      src: "https://cdn.pixabay.com/photo/2021/06/22/17/24/torres-del-paine-6356782_1280.jpg",
     },
     {
-      title1: "La",
-      title2: "Grange",
-      src: "la_grange.jpeg",
+      title1: "Chocolate",
+      title2: "Hills",
+      src: "https://cdn.pixabay.com/photo/2021/10/26/11/28/chocolate-hills-6743421_1280.jpg",
     },
     {
-      title1: "Deux Huit",
-      title2: "Huit",
-      src: "deux_huit_huit.jpeg",
+      title1: "Banaue ",
+      title2: "Rice Terraces",
+      src: "https://cdn.pixabay.com/photo/2018/11/10/16/41/philippines-3806956_960_720.jpg",
     },
     {
-      title1: "Nothing",
-      title2: "Design Studio",
-      src: "nothing_design_studio.png",
+      title1: "Samal",
+      title2: "Island",
+      src: "https://media2.thrillophilia.com/images/photos/000/373/182/original/1621935113_shutterstock_1830669002.jpg?w=753&h=450&dpr=1.0",
     },
     {
-      title1: "Mambo",
-      title2: "Mambo",
-      src: "mambo_mambo.jpeg",
+      title1: "Batan",
+      title2: "Island",
+      src: "https://media2.thrillophilia.com/images/photos/000/373/187/original/1621935438_shutterstock_1134296975.jpg?w=753&h=450&dpr=1.0",
     },
   ];
 
@@ -77,7 +77,7 @@ const Project = ({ project }: { project: any }) => {
         animate={isActive ? "open" : "closed"}
         className="imgContainer"
       >
-        <img src="https://cdn.pixabay.com/photo/2023/03/25/21/48/cat-7876974_1280.jpg"></img>
+        <img src={src}></img>
       </motion.div>
 
       <p>{title2}</p>
