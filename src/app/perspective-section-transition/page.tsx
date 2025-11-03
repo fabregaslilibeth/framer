@@ -2,16 +2,16 @@
 
 import Image from "next/image";
 import { useRef, useEffect } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import Lenis from "lenis";
 
 export default function PerspectiveSectionTransition() {
-  const container = useRef();
+  const container = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({});
 
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
 
       requestAnimationFrame(raf);
@@ -35,7 +35,7 @@ export default function PerspectiveSectionTransition() {
   );
 }
 
-const Section1 = ({ scrollYProgress }: { scrollYProgress: any }) => {
+const Section1 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
@@ -62,7 +62,7 @@ const Section1 = ({ scrollYProgress }: { scrollYProgress: any }) => {
   );
 };
 
-const Section2 = ({ scrollYProgress }: { scrollYProgress: any }) => {
+const Section2 = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
   const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
 
   const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
