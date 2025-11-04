@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'media2.thrillophilia.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
